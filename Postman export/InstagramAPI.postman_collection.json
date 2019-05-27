@@ -1,0 +1,91 @@
+{
+	"info": {
+		"_postman_id": "1d18726f-9f6b-4ee2-a918-d3e4757e8ece",
+		"name": "InstagramAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Register User",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\": \"tailorj64@gmial.com\",\n\t\"password\": \"password\",\n\t\"fullName\": \"Jay Tailor\"\n}"
+				},
+				"url": {
+					"raw": "localhost:3000/user/signup?email=tailorj64@gmail.com&password=password&fullName=JayTailor",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"signup"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "tailorj64@gmail.com"
+						},
+						{
+							"key": "password",
+							"value": "password"
+						},
+						{
+							"key": "fullName",
+							"value": "JayTailor"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login User",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\": \"tailorj64@gmail.com\",\n\t\"password\": \"password\"\n}"
+				},
+				"url": "localhost:3000/user/signin"
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": {}
+	},
+	"variable": [
+		{
+			"id": "a7646e6f-fa16-4a0f-8d4f-626a3108e090",
+			"key": "host",
+			"value": "localhost",
+			"type": "string"
+		},
+		{
+			"id": "4409be0a-70ae-4420-9ed9-1db41b26bfd2",
+			"key": "port",
+			"value": "3000",
+			"type": "string"
+		}
+	]
+}
