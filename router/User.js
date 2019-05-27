@@ -9,7 +9,7 @@ const router = Router();
 
 // Import controllers
 
-const { registerUser } = require('../controller/User')
+const { registerUser, signinUser } = require('../controller/User')
 
 // Routes
 
@@ -23,6 +23,29 @@ router.post('/signup', (req,res)=> {
     } else {
       res.statusCode = 200;
       res.json(result);
+    }
+  });
+});
+
+router.post('/signin', (req, res) => {
+  signinUser(req.body, (err, result) => {
+    if (err) {
+      res.status(400).send({ message: 'Email ID does not exist', result: false });
+    } else {
+      const hash = bcrypt.compareSync(req.body.password, result.password);
+      if (hash) {
+        const token = jwt.sign({ email: req.body.email }, secretKey, {});
+        res.status(200).send({
+          message: 'Login successfully',
+          result: true,
+          token: token,
+          role: result.role,
+          id: result.id,
+          fullName: result.fullName
+        })
+      } else {
+        res.status(400).send({ message: 'Password incorrect', result: false });
+      }
     }
   });
 });
