@@ -18,6 +18,9 @@ app.use(express.static(ImageDir));
 const ThumbDir = path.join(__dirname, "/Images/thumbnails");
 app.use(express.static(ThumbDir));
 
+const userRoute = require('./router/User');
+app.use('/user', userRoute);
+
 db.authenticate()
   .then(() => {
     console.log("Database connected");
